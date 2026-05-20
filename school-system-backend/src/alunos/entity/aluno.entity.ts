@@ -11,7 +11,7 @@ export class Aluno {
   @Column({ unique: true })
   matricula!: string;
 
-  @Column({ type: 'date' })
+  @Column({ name: 'data_nascimento', type: 'date' })
   dataNascimento!: Date;
 
   @Column({ unique: true, length: 11 })
