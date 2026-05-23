@@ -138,7 +138,7 @@ Antes de executar o projeto, é necessário possuir instalado:
 # 📥 Clonando o Projeto
 
 ```bash
-git clone https://github.com/seu-usuario/schoolSystem.git
+git clone https://github.com/ErikMazzuco/schoolSystem.git
 ```
 
 ```bash
