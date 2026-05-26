@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Not } from 'typeorm';
 import { Aluno } from '../entity/aluno.entity';
 import { CreateAlunoDto } from '../dto/create-aluno.dto';
 
@@ -29,8 +29,31 @@ export class AlunosRepository {
     return this.repo.save(aluno);
   }
 
+  async update(id: string, dto: Partial<CreateAlunoDto>): Promise<Aluno> {
+    const aluno = await this.findOne(id);
+    if (!aluno) {
+      return null as any;
+    }
+    Object.assign(aluno, dto);
+    return this.repo.save(aluno);
+  }
+
+  async softDelete(id: string): Promise<void> {
+    const aluno = await this.findOne(id);
+    if (!aluno) {
+      return;
+    }
+    aluno.status = 'INATIVO';
+    await this.repo.save(aluno);
+  }
+
   async existsByMatricula(matricula: string): Promise<boolean> {
     const count = await this.repo.count({ where: { matricula } });
+    return count > 0;
+  }
+
+  async existsByMatriculaExceptId(matricula: string, id: number): Promise<boolean> {
+    const count = await this.repo.count({ where: { matricula, id: Not(id) } });
     return count > 0;
   }
 
@@ -39,8 +62,18 @@ export class AlunosRepository {
     return count > 0;
   }
 
+  async existsByCpfExceptId(cpf: string, id: number): Promise<boolean> {
+    const count = await this.repo.count({ where: { cpf, id: Not(id) } });
+    return count > 0;
+  }
+
   async existsByEmail(email: string): Promise<boolean> {
     const count = await this.repo.count({ where: { email } });
+    return count > 0;
+  }
+
+  async existsByEmailExceptId(email: string, id: number): Promise<boolean> {
+    const count = await this.repo.count({ where: { email, id: Not(id) } });
     return count > 0;
   }
 }
