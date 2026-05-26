@@ -1,0 +1,284 @@
+### ============================================================
+### SCHOOL SYSTEM - REST CLIENT EXAMPLES FOR GET /:id
+### ============================================================
+### 
+### Este arquivo contém exemplos REST Client para testar
+### todos os endpoints GET /:id implementados
+###
+### Como usar: Abra com a extensão REST Client do VS Code
+### Clique em "Send Request" acima de cada requisição
+###
+
+@host = http://localhost:3000
+@validId = 1
+@invalidId = 99999
+
+### ============================================================
+### ALUNOS - Get by ID
+### ============================================================
+
+### GET Aluno (sucesso - 200 OK)
+GET {{host}}/alunos/{{validId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Aluno (erro - 404 Not Found)
+GET {{host}}/alunos/{{invalidId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Alunos (todos - 200 OK)
+GET {{host}}/alunos HTTP/1.1
+Content-Type: application/json
+
+### Criar Aluno (para testes)
+POST {{host}}/alunos HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "João Silva",
+  "matricula": "2025001",
+  "dataNascimento": "2010-05-15",
+  "cpf": "12345678901",
+  "email": "joao@email.com",
+  "telefone": "44999990000",
+  "turma": "7A"
+}
+
+### ============================================================
+### PROFESSORES - Get by ID
+### ============================================================
+
+### GET Professor (sucesso - 200 OK)
+GET {{host}}/professores/{{validId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Professor (erro - 404 Not Found)
+GET {{host}}/professores/{{invalidId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Professores (todos - 200 OK)
+GET {{host}}/professores HTTP/1.1
+Content-Type: application/json
+
+### Criar Professor (para testes)
+POST {{host}}/professores HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "Maria Santos",
+  "cpf": "11122233344",
+  "email": "maria@email.com",
+  "telefone": "44988887777",
+  "disciplina": "Matemática"
+}
+
+### ============================================================
+### TURMAS - Get by ID
+### ============================================================
+
+### GET Turma (sucesso - 200 OK)
+GET {{host}}/turmas/{{validId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Turma (erro - 404 Not Found)
+GET {{host}}/turmas/{{invalidId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Turmas (todas - 200 OK)
+GET {{host}}/turmas HTTP/1.1
+Content-Type: application/json
+
+### Criar Turma (para testes)
+POST {{host}}/turmas HTTP/1.1
+Content-Type: application/json
+
+{
+  "codigo": "7A-2025",
+  "serie": "7º Ano",
+  "turno": "MATUTINO",
+  "capacidade": 30,
+  "professorResponsavel": "Maria Santos"
+}
+
+### ============================================================
+### NOTAS - Get by ID
+### ============================================================
+
+### GET Nota (sucesso - 200 OK)
+GET {{host}}/notas/{{validId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Nota (erro - 404 Not Found)
+GET {{host}}/notas/{{invalidId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Notas (todas - 200 OK)
+GET {{host}}/notas HTTP/1.1
+Content-Type: application/json
+
+### Criar Nota (para testes)
+POST {{host}}/notas HTTP/1.1
+Content-Type: application/json
+
+{
+  "alunoId": 1,
+  "disciplinaId": 1,
+  "valor": 8.5,
+  "bimestre": 1,
+  "ano": 2025,
+  "observacoes": "Excelente desempenho"
+}
+
+### ============================================================
+### DISCIPLINAS - Get by ID
+### ============================================================
+
+### GET Disciplina (sucesso - 200 OK)
+GET {{host}}/disciplinas/{{validId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Disciplina (erro - 404 Not Found)
+GET {{host}}/disciplinas/{{invalidId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Disciplinas (todas - 200 OK)
+GET {{host}}/disciplinas HTTP/1.1
+Content-Type: application/json
+
+### Criar Disciplina (para testes)
+POST {{host}}/disciplinas HTTP/1.1
+Content-Type: application/json
+
+{
+  "codigo": "MAT001",
+  "nome": "Matemática Básica",
+  "descricao": "Fundamentos de matemática para 7º ano",
+  "cargaHoraria": 80,
+  "ementa": "Operações básicas, frações, percentual..."
+}
+
+### ============================================================
+### USUÁRIOS - Get by ID
+### ============================================================
+
+### GET Usuário (sucesso - 200 OK)
+GET {{host}}/usuarios/{{validId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Usuário (erro - 404 Not Found)
+GET {{host}}/usuarios/{{invalidId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Usuários (todos - 200 OK)
+GET {{host}}/usuarios HTTP/1.1
+Content-Type: application/json
+
+### Criar Usuário (para testes)
+POST {{host}}/usuarios HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "aluno@email.com",
+  "senha": "senha123456",
+  "nome": "Aluno Test",
+  "papel": "ALUNO"
+}
+
+### ============================================================
+### FREQUÊNCIA - Get by ID
+### ============================================================
+
+### GET Frequência (sucesso - 200 OK)
+GET {{host}}/frequencia/{{validId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Frequência (erro - 404 Not Found)
+GET {{host}}/frequencia/{{invalidId}} HTTP/1.1
+Content-Type: application/json
+
+### GET Frequências (todas - 200 OK)
+GET {{host}}/frequencia HTTP/1.1
+Content-Type: application/json
+
+### Criar Frequência (para testes)
+POST {{host}}/frequencia HTTP/1.1
+Content-Type: application/json
+
+{
+  "alunoId": 1,
+  "turmaId": 1,
+  "disciplinaId": 1,
+  "data": "2025-05-26",
+  "status": "PRESENTE",
+  "justificativa": null
+}
+
+### ============================================================
+### TESTES DE FLUXO COMPLETO
+### ============================================================
+
+### 1. Criar um aluno
+# @name createAluno
+POST {{host}}/alunos HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "Carlos Oliveira",
+  "matricula": "2025999",
+  "dataNascimento": "2009-03-20",
+  "cpf": "98765432109",
+  "email": "carlos@email.com",
+  "telefone": "44987654321",
+  "turma": "8A"
+}
+
+### 2. Buscar o aluno criado (use o ID retornado acima)
+GET {{host}}/alunos/{{validId}} HTTP/1.1
+Content-Type: application/json
+
+### 3. Criar um professor
+# @name createProfessor
+POST {{host}}/professores HTTP/1.1
+Content-Type: application/json
+
+{
+  "nome": "Ana Costa",
+  "cpf": "55566677788",
+  "email": "ana.costa@email.com",
+  "telefone": "44999998888",
+  "disciplina": "Português"
+}
+
+### 4. Buscar o professor criado
+GET {{host}}/professores/{{validId}} HTTP/1.1
+Content-Type: application/json
+
+### ============================================================
+### NOTAS IMPORTANTES
+### ============================================================
+###
+### ✅ HTTP RESPONSES ESPERADAS:
+###   - 200 OK: Quando a entidade é encontrada
+###   - 201 Created: Quando uma nova entidade é criada
+###   - 404 Not Found: Quando a entidade com o ID não existe
+###   - 409 Conflict: Quando há conflito (ex: e-mail duplicado)
+###
+### 📝 PADRÃO DE ERRO 404:
+###   {
+###     "statusCode": 404,
+###     "message": "[Nome] não encontrado."
+###   }
+###
+### 🔄 ORDEM RECOMENDADA DE TESTES:
+###   1. POST (criar) 
+###   2. GET (listar todos)
+###   3. GET /:id com validId (sucesso)
+###   4. GET /:id com invalidId (erro)
+###   5. Validar que dados retornados correspondem
+###
+### 💡 DICAS:
+###   - Altere @validId para um ID existente no seu banco
+###   - Altere @host se o servidor está em porta diferente
+###   - Use Ctrl+Alt+R para enviar requisição
+###   - Veja a aba "Response" para resultados
+###
+### ============================================================

@@ -1,5 +1,11 @@
 import { DataSource } from 'typeorm';
 import { Aluno } from './alunos/entity/aluno.entity';
+import { Professor } from './professores/entity/professor.entity';
+import { Turma } from './turmas/entity/turma.entity';
+import { Nota } from './notas/entity/nota.entity';
+import { Disciplina } from './disciplinas/entity/disciplina.entity';
+import { Usuario } from './usuarios/entity/usuario.entity';
+import { Frequencia } from './frequencia/entity/frequencia.entity';
 import { CreateAlunosTable1748000000000 } from './migration/1748000000000-CreateAlunosTable';
 
 export const AppDataSource = new DataSource({
@@ -9,6 +15,6 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASS || 'postgres',
   database: process.env.DB_NAME || 'schoolsystem',
-  entities: [Aluno],
+  entities: [Aluno, Professor, Turma, Nota, Disciplina, Usuario, Frequencia],
   migrations: [CreateAlunosTable1748000000000],
 });

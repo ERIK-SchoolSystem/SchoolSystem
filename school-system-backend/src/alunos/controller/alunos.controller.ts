@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, HttpCode, HttpStatus } from '@nestjs/common';
 import { AlunosService } from '../service/alunos.service';
 import { CreateAlunoDto } from '../dto/create-aluno.dto';
 
@@ -10,6 +10,12 @@ export class AlunosController {
   @HttpCode(HttpStatus.OK)
   findAll() {
     return this.alunosService.findAll();
+  }
+
+  @Get(':id')
+  @HttpCode(HttpStatus.OK)
+  findOne(@Param('id') id: string) {
+    return this.alunosService.findOne(id);
   }
 
   @Post()

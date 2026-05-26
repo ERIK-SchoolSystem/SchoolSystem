@@ -18,6 +18,12 @@ export class AlunosRepository {
     });
   }
 
+  async findOne(id: string): Promise<Aluno | null> {
+    return this.repo.findOne({
+      where: { id: parseInt(id), status: 'ATIVO' },
+    });
+  }
+
   async create(dto: CreateAlunoDto): Promise<Aluno> {
     const aluno = this.repo.create(dto);
     return this.repo.save(aluno);

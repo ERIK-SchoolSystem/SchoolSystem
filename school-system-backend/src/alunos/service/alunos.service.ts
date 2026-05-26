@@ -1,4 +1,4 @@
-import { Injectable, ConflictException } from '@nestjs/common';
+import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { AlunosRepository } from '../repository/alunos.repository';
 import { CreateAlunoDto } from '../dto/create-aluno.dto';
 import { Aluno } from '../entity/aluno.entity';
@@ -9,6 +9,16 @@ export class AlunosService {
 
   async findAll(): Promise<Aluno[]> {
     return this.alunosRepository.findAll();
+  }
+
+  async findOne(id: string): Promise<Aluno> {
+    const aluno = await this.alunosRepository.findOne(id);
+
+    if (!aluno) {
+      throw new NotFoundException('Aluno não encontrado.');
+    }
+
+    return aluno;
   }
 
   async create(dto: CreateAlunoDto): Promise<Aluno> {
