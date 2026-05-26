@@ -20,7 +20,24 @@ O sistema foi desenvolvido considerando modularização, separação de responsa
 
 ---
 
-# 🚀 Funcionalidades
+# �️ Skills
+
+Uma documentação completa sobre as tecnologias, arquitetura, padrões e práticas utilizadas neste projeto foi criada.
+
+**📖 [Consulte a seção Skills completa →](./SKILLS.md)**
+
+Nela você encontrará:
+- ✅ Tecnologias e versões utilizadas
+- ✅ Arquitetura e padrões de design
+- ✅ Segurança e validações
+- ✅ Testes e qualidade de código
+- ✅ Banco de dados e ORM
+- ✅ DevOps e tooling
+- ✅ Soft skills aplicadas
+
+---
+
+# �🚀 Funcionalidades
 
 ## 👨‍🎓 Alunos
 
